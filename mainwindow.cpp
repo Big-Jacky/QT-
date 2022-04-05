@@ -12,10 +12,17 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     model1=new QStandardItemModel();
     ui->ForwardTab->setModel(model1);
+
     QStringList st_h_headers;
-    st_h_headers<<"原数"<<"结果";
+    st_h_headers<<"序号"<<"原数"<<"结果";
     model1->setHorizontalHeaderLabels(st_h_headers);
     model1->setRowCount(100);
+    for (int i=0;i<model1->rowCount();i++) {
+        model1->setItem(i,0,new QStandardItem(QString("%1").arg(i+1)));
+        model1->item(i,0)->setTextAlignment(Qt::AlignCenter);
+    }
+    ui->ForwardTab->verticalHeader()->hide();
+    ui->ForwardTab->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 }
 
 MainWindow::~MainWindow()
@@ -29,15 +36,15 @@ void MainWindow::on_cal_clicked()//实现TableView 的取数和计算输出
     double a=0;
     for (int i = 0; i<100; ++i)
     {
-        QModelIndex index=model1->index(i,0);
+        QModelIndex index=model1->index(i,1);
         a=index.data().toDouble();
 
         a=a*5;
-        model1->setItem(i,1,new QStandardItem(QString("%1").arg(a)));
-        index=model1->index(i,1);
+        model1->setItem(i,2,new QStandardItem(QString("%1").arg(a)));
+        index=model1->index(i,2);
         if(index.data().toDouble()==0)
         {
-            model1->setItem(i,0,new QStandardItem(QString("0")));
+            model1->setItem(i,1,new QStandardItem(QString("0")));
         }
     }
 }
@@ -80,7 +87,7 @@ bool MainWindow::on_Tab2Text_clicked()//实现TableView的数据输出和预览
         for( j=0;j<model1->columnCount();j++)
         {
             aItem=model1->item(i,j);
-            double index=model1->index(i,1).data().toDouble();
+            double index=model1->index(i,2).data().toDouble();
             if(index==0)
             {
                 continue;
@@ -88,7 +95,7 @@ bool MainWindow::on_Tab2Text_clicked()//实现TableView的数据输出和预览
             else
             {
                 str=str+aItem->text()+QString::asprintf("\t");
-                if(j==1)
+                if(j==2)
                 {
                     aStream<<str<<"\n";
                 }
@@ -142,4 +149,16 @@ bool MainWindow::on_showdata_clicked()
     aFile.close();//关闭文件
 
     return  true;
+}
+
+void MainWindow::resizeEvent(QResizeEvent *event)
+{
+    if(nullptr!=this->ui)
+    {
+        ui->ForwardTab->setFixedWidth(this->width()/2);
+        ui->ForwardTab->setColumnWidth(0,(ui->ForwardTab->width()-25)/6);
+        ui->ForwardTab->setColumnWidth(1,(ui->ForwardTab->width()-25)/3);
+        ui->ForwardTab->setColumnWidth(2,(ui->ForwardTab->width()-25)/2);
+    }
+
 }

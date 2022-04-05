@@ -29,5 +29,8 @@ private slots:
 private:
     Ui::MainWindow *ui;
     QStandardItemModel *model1;
+
+protected:
+    virtual void resizeEvent(QResizeEvent *event) override;
 };
 #endif // MAINWINDOW_H
