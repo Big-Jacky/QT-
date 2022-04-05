@@ -153,6 +153,7 @@ bool MainWindow::on_showdata_clicked()
 
 void MainWindow::resizeEvent(QResizeEvent *event)
 {
+    Q_UNUSED(event)
     if(nullptr!=this->ui)
     {
         ui->ForwardTab->setFixedWidth(this->width()/2);
