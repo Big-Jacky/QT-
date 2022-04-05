@@ -26,6 +26,10 @@ private slots:
 
     bool on_showdata_clicked();
 
+    void on_btnXls_clicked();
+
+    bool on_action_input_triggered();
+
 private:
     Ui::MainWindow *ui;
     QStandardItemModel *model1;

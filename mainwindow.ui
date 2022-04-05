@@ -19,9 +19,6 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
-     <widget class="QTableView" name="ForwardTab"/>
-    </item>
     <item row="1" column="0">
      <widget class="QPushButton" name="cal">
       <property name="text">
@@ -32,6 +29,12 @@
         <normaloff>:/new/picture/pic/计算指标.png</normaloff>:/new/picture/pic/计算指标.png</iconset>
       </property>
      </widget>
+    </item>
+    <item row="0" column="1" colspan="2">
+     <widget class="QPlainTextEdit" name="forText"/>
+    </item>
+    <item row="0" column="0">
+     <widget class="QTableView" name="ForwardTab"/>
     </item>
     <item row="1" column="1">
      <widget class="QPushButton" name="Tab2Text">
@@ -55,8 +58,12 @@
       </property>
      </widget>
     </item>
-    <item row="0" column="1" colspan="2">
-     <widget class="QPlainTextEdit" name="forText"/>
+    <item row="2" column="1">
+     <widget class="QPushButton" name="btnXls">
+      <property name="text">
+       <string>输出EXCEL</string>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>

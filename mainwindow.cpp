@@ -60,7 +60,7 @@ bool MainWindow::on_Tab2Text_clicked()//实现TableView的数据输出和预览
     QString curPath=QCoreApplication::applicationDirPath(); //获取应用程序的路径
     //调用打开文件对话框选择一个文件
     QString aFileName=QFileDialog::getSaveFileName(this,tr("选择一个文件"),curPath,
-                                                   "文本文件(*.txt);;所有文件(*.*)");
+                                                   "文本文件(*.txt)");
 
     if (aFileName.isEmpty()) //未选择文件，退出
         return false;
@@ -127,7 +127,7 @@ bool MainWindow::on_showdata_clicked()
     QString curPath=QDir::currentPath();//获取系统当前目录
 //调用打开文件对话框打开一个文件
     QString aFileName=QFileDialog::getOpenFileName(this,"打开一个文件",curPath,
-                 "程序文件(*.h *cpp);;文本文件(*.txt);;所有文件(*.*)");
+                 "文本文件(*.txt)");
 
     if (aFileName.isEmpty())
         return false; //如果未选择文件，退出
@@ -167,4 +167,52 @@ void MainWindow::resizeEvent(QResizeEvent *event)
         ui->ForwardTab->setColumnWidth(2,ui->ForwardTab->width()/2-8);
     }
 
+}
+
+void MainWindow::on_btnXls_clicked()
+{//预留表格输出excel文件
+
+}
+
+bool MainWindow::on_action_input_triggered()
+{//数据读取
+    QString curPath=QDir::currentPath();
+    QString aFileName=QFileDialog::getOpenFileName(this,"打开一个文件",curPath,"文本文件(*.txt)");
+    if(aFileName.isEmpty())
+        return false;
+    QFile aFile(aFileName);
+    QStringList aFileContent;
+    if(aFile.open(QIODevice::ReadOnly|QIODevice::Text))
+    {
+        QTextStream aStream(&aFile);
+        ui->forText->clear();
+        while(!aStream.atEnd())
+        {
+            QString str=aStream.readLine();
+            ui->forText->appendPlainText(str);
+            aFileContent.append(str);
+        }
+    }
+    int rowCount=aFileContent.count();
+    model1->setRowCount(rowCount-1);
+    //设置表头
+    QString  header=aFileContent.at(0);
+    QStringList headerlist=header.split(QRegExp("\\s+"),QString::SkipEmptyParts);
+    model1->setHorizontalHeaderLabels(headerlist);
+    //设置表格数据
+    QStandardItem *aItem;
+    QStringList tmpList;
+    for (int i=1;i<rowCount;i++) {
+        QString aLineText=aFileContent.at(i);
+        tmpList=aLineText.split(QRegExp("\\s+"),QString::SkipEmptyParts);
+        for (int j=0;j<3;j++) {
+            aItem=new QStandardItem(tmpList.at(j));
+            model1->setItem(i-1,j,aItem);
+            model1->item(i-1,j)->setTextAlignment(Qt::AlignCenter);
+        }
+    }
+    ui->ForwardTab->setFixedWidth(this->width()/2);
+    ui->ForwardTab->setColumnWidth(0,ui->ForwardTab->width()/6-7);
+    ui->ForwardTab->setColumnWidth(1,ui->ForwardTab->width()/3-7);
+    ui->ForwardTab->setColumnWidth(2,ui->ForwardTab->width()/2-8);
 }
