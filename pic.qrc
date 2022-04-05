@@ -1,0 +1,43 @@
+<RCC>
+    <qresource prefix="/new/picture">
+        <file>pic/39、输出excel报告模板.png</file>
+        <file>pic/913菜单_声明.png</file>
+        <file>pic/Excel读取.png</file>
+        <file>pic/Excel写入.png</file>
+        <file>pic/new-document-worksheet.png</file>
+        <file>pic/保存.png</file>
+        <file>pic/报表.png</file>
+        <file>pic/报表输出.png</file>
+        <file>pic/表格.png</file>
+        <file>pic/插入列.png</file>
+        <file>pic/插入行.png</file>
+        <file>pic/查验 (1).png</file>
+        <file>pic/查验.png</file>
+        <file>pic/初始化.png</file>
+        <file>pic/分析还原.png</file>
+        <file>pic/复制.png</file>
+        <file>pic/格式转换.png</file>
+        <file>pic/计算指标.png</file>
+        <file>pic/剪切.png</file>
+        <file>pic/交叉表.png</file>
+        <file>pic/接口配置 (1).png</file>
+        <file>pic/接口配置.png</file>
+        <file>pic/开发中.png</file>
+        <file>pic/秒表.png</file>
+        <file>pic/入库.png</file>
+        <file>pic/删除列.png</file>
+        <file>pic/删除行.png</file>
+        <file>pic/删格布局.png</file>
+        <file>pic/输出.png</file>
+        <file>pic/添加.png</file>
+        <file>pic/维修.png</file>
+        <file>pic/文本输出.png</file>
+        <file>pic/消息.png</file>
+        <file>pic/新建表格.png</file>
+        <file>pic/信息.png</file>
+        <file>pic/性能计算 (1).png</file>
+        <file>pic/性能计算.png</file>
+        <file>pic/粘贴.png</file>
+        <file>pic/ORFT.ico</file>
+    </qresource>
+</RCC>
