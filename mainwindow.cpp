@@ -47,6 +47,11 @@ void MainWindow::on_cal_clicked()//实现TableView 的取数和计算输出
             model1->setItem(i,1,new QStandardItem(QString("0")));
         }
     }
+    //以下修复布局
+    ui->ForwardTab->setFixedWidth(this->width()/2);
+    ui->ForwardTab->setColumnWidth(0,ui->ForwardTab->width()/6-7);
+    ui->ForwardTab->setColumnWidth(1,ui->ForwardTab->width()/3-7);
+    ui->ForwardTab->setColumnWidth(2,ui->ForwardTab->width()/2-8);
 }
 
 bool MainWindow::on_Tab2Text_clicked()//实现TableView的数据输出和预览
@@ -157,9 +162,9 @@ void MainWindow::resizeEvent(QResizeEvent *event)
     if(nullptr!=this->ui)
     {
         ui->ForwardTab->setFixedWidth(this->width()/2);
-        ui->ForwardTab->setColumnWidth(0,(ui->ForwardTab->width()-25)/6);
-        ui->ForwardTab->setColumnWidth(1,(ui->ForwardTab->width()-25)/3);
-        ui->ForwardTab->setColumnWidth(2,(ui->ForwardTab->width()-25)/2);
+        ui->ForwardTab->setColumnWidth(0,ui->ForwardTab->width()/6-7);
+        ui->ForwardTab->setColumnWidth(1,ui->ForwardTab->width()/3-7);
+        ui->ForwardTab->setColumnWidth(2,ui->ForwardTab->width()/2-8);
     }
 
 }
