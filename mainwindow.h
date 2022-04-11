@@ -36,5 +36,8 @@ private:
 
 protected:
     virtual void resizeEvent(QResizeEvent *event) override;
+
+    bool eventFilter(QObject *watched,QEvent *event);
+    void paint();
 };
 #endif // MAINWINDOW_H

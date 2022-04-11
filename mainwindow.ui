@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>826</width>
-    <height>563</height>
+    <width>680</width>
+    <height>547</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,50 +19,119 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="1" column="0">
-     <widget class="QPushButton" name="cal">
-      <property name="text">
-       <string>计算</string>
-      </property>
-      <property name="icon">
-       <iconset resource="pic.qrc">
-        <normaloff>:/new/picture/pic/计算指标.png</normaloff>:/new/picture/pic/计算指标.png</iconset>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1" colspan="2">
-     <widget class="QPlainTextEdit" name="forText"/>
-    </item>
     <item row="0" column="0">
-     <widget class="QTableView" name="ForwardTab"/>
-    </item>
-    <item row="1" column="1">
-     <widget class="QPushButton" name="Tab2Text">
-      <property name="text">
-       <string>输出</string>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex">
+       <number>0</number>
       </property>
-      <property name="icon">
-       <iconset resource="pic.qrc">
-        <normaloff>:/new/picture/pic/文本输出.png</normaloff>:/new/picture/pic/文本输出.png</iconset>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="2">
-     <widget class="QPushButton" name="showdata">
-      <property name="text">
-       <string>显示</string>
-      </property>
-      <property name="icon">
-       <iconset resource="pic.qrc">
-        <normaloff>:/new/picture/pic/报表.png</normaloff>:/new/picture/pic/报表.png</iconset>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="1">
-     <widget class="QPushButton" name="btnXls">
-      <property name="text">
-       <string>输出EXCEL</string>
-      </property>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>T1</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="0" column="1">
+         <widget class="QTableView" name="ForwardTab"/>
+        </item>
+        <item row="2" column="1">
+         <widget class="QPushButton" name="cal">
+          <property name="text">
+           <string>计算</string>
+          </property>
+          <property name="icon">
+           <iconset resource="pic.qrc">
+            <normaloff>:/new/picture/pic/计算指标.png</normaloff>:/new/picture/pic/计算指标.png</iconset>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="2">
+         <widget class="QPushButton" name="Tab2Text">
+          <property name="text">
+           <string>输出</string>
+          </property>
+          <property name="icon">
+           <iconset resource="pic.qrc">
+            <normaloff>:/new/picture/pic/文本输出.png</normaloff>:/new/picture/pic/文本输出.png</iconset>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="3">
+         <widget class="QPushButton" name="showdata">
+          <property name="text">
+           <string>显示</string>
+          </property>
+          <property name="icon">
+           <iconset resource="pic.qrc">
+            <normaloff>:/new/picture/pic/报表.png</normaloff>:/new/picture/pic/报表.png</iconset>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="4">
+         <widget class="QPushButton" name="btnXls">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="toolTip">
+           <string>待实现</string>
+          </property>
+          <property name="text">
+           <string>输出EXCEL</string>
+          </property>
+          <property name="icon">
+           <iconset resource="pic.qrc">
+            <normaloff>:/new/picture/pic/Excel写入.png</normaloff>:/new/picture/pic/Excel写入.png</iconset>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="2" rowspan="2" colspan="3">
+         <widget class="QPlainTextEdit" name="forText"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string>T2</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="0">
+         <widget class="QToolBox" name="TB1">
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
+          <widget class="QWidget" name="QPainter">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>638</width>
+             <height>341</height>
+            </rect>
+           </property>
+           <attribute name="label">
+            <string>QPainter</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout">
+            <item>
+             <widget class="QWidget" name="w1" native="true"/>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="page_2">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>573</width>
+             <height>121</height>
+            </rect>
+           </property>
+           <attribute name="label">
+            <string>Page 2</string>
+           </attribute>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
      </widget>
     </item>
    </layout>
@@ -72,7 +141,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>826</width>
+     <width>680</width>
      <height>26</height>
     </rect>
    </property>
