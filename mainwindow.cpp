@@ -168,6 +168,7 @@ void MainWindow::resizeEvent(QResizeEvent *event)
         ui->ForwardTab->setColumnWidth(0,ui->ForwardTab->width()/6-7);
         ui->ForwardTab->setColumnWidth(1,ui->ForwardTab->width()/3-7);
         ui->ForwardTab->setColumnWidth(2,ui->ForwardTab->width()/2-8);
+
     }
 
 }
@@ -185,47 +186,59 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
 
 void MainWindow::paint()
 {
-    QPainter painter1(ui->w1),
-            painter2(ui->w1);
+    QPainter painter(ui->w1);
     ui->w1->setPalette(QPalette(Qt::black));//设置背景为黑色
     ui->w1->setAutoFillBackground(true);//控件边框为黑色
     int W=ui->w1->width(); //绘图区宽度
     int H=ui->w1->height(); //绘图区高度
-    QPen    pen1,
-            pen2;
+    QPen    pen;
 
-    QBrush brush1,
-            brush2;
+    QBrush brush;
 
-    pen1.setWidth(3); //线宽
-    pen1.setColor(Qt::darkGray); //划线颜色
+    pen.setWidth(3); //线宽
+    pen.setColor(Qt::darkGray); //划线颜色
 
     //    //Qt::NoPen,Qt::SolidLine, Qt::DashLine, Qt::DotLine,Qt::DashDotLine,Qt::DashDotDotLine,Qt::CustomDashLine
-    pen1.setStyle(Qt::SolidLine);//线的类型，实线、虚线等
+    pen.setStyle(Qt::SolidLine);//线的类型，实线、虚线等
 
     //    //Qt::FlatCap, Qt::SquareCap,Qt::RoundCap
-    pen1.setCapStyle(Qt::FlatCap);//线端点样式
+    pen.setCapStyle(Qt::FlatCap);//线端点样式
 
     //    //Qt::MiterJoin,Qt::BevelJoin,Qt::RoundJoin,Qt::SvgMiterJoin
-    pen1.setJoinStyle(Qt::BevelJoin);//线的连接点样式
+    pen.setJoinStyle(Qt::BevelJoin);//线的连接点样式
 
-    brush1.setColor(Qt::gray);
-    painter1.setBrush(brush1);
-    painter1.setPen(pen1);
-    QRect   rect1(W/4,H/4,W/2,H/2); //中间区域矩形框
-    painter1.drawRect(rect1); //启动绘制
+    brush.setColor(Qt::gray);
+    painter.setBrush(brush);
+    painter.setPen(pen);
 
-    brush2.setColor(Qt::green);
-    brush2.setStyle(Qt::DiagCrossPattern);
-    painter2.setBrush(brush2);
-    QRect   rect2(3*W/8,3*H/8,W/4,H/4);
-    painter2.drawRect(rect2);
+    QRect   rect1(0,H/4,W/4,3*H/4); //中间区域矩形框
+    painter.drawRect(rect1); //启动绘制
+    painter.save();//画笔保存
 
-    QRect rect(W/4,H/4,W/3,H/5);
-    int startAngle=320*16;
-    int spanAngle=40*16;
+    brush.setColor(Qt::green);
+    brush.setStyle(Qt::DiagCrossPattern);
+    painter.setBrush(brush);
+    QRect   rect2(W/4,H/4,W/4,3*H/4);
+    painter.drawRect(rect2);
 
-    painter2.drawPie(rect,startAngle,spanAngle);
+    pen.setColor(Qt::red);
+    painter.setPen(pen);
+    brush.setStyle(Qt::CrossPattern);
+    painter.setBrush(brush);
+
+    QRect rect3(W/2,H/4,W/4,3*H/4);
+    painter.drawRect(rect3);
+
+    brush.setStyle(Qt::Dense2Pattern);
+    painter.setBrush(brush);
+    pen.setStyle(Qt::DashLine);
+    painter.setPen(pen);
+    QRect rect4(3*W/4,H/4,W/4,3*H/4);
+    painter.drawRect(rect4);
+
+    painter.restore();//画笔恢复
+    QRect rect5(0,0,W,H/4);
+    painter.drawRect(rect5);
 }
 
 void MainWindow::on_btnXls_clicked()
